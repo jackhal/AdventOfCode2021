@@ -1,0 +1,23 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main(){
+    ifstream input;
+    input.open("Input.txt");
+    int horizontal = 0, depth = 0, aim = 0, param;
+    string command;
+    while(!input.eof()){
+        input >> command >> param;
+        if(command=="forward"){
+            horizontal += param;
+            depth += (aim * param);
+        }else if(command=="down"){
+            aim += param;
+        }else if(command=="up"){
+            aim -= param;
+        }
+    }
+    cout << horizontal * depth << endl;
+}
