@@ -1,0 +1,24 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main(){
+    ifstream input;
+    input.open("Input.txt");
+    int a, b, c, oldSum, currentSum, numInc = 0;
+    input >> a >> b >> c;
+    currentSum = a + b + c;
+    while(!input.eof()){
+        a = b;
+        b = c;
+        input >> c;
+        oldSum = currentSum;
+        currentSum = a + b + c;
+        if(oldSum < currentSum){
+            numInc++;
+        }
+    }
+    input.close();
+    cout << numInc << endl;
+}
