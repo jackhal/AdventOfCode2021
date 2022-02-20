@@ -20,4 +20,5 @@ int main(){
         }
     }
     cout << horizontal * depth << endl;
+    input.close();
 }
