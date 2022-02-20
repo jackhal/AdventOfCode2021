@@ -1,0 +1,34 @@
+#include <iostream>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
+
+int main(){
+    ifstream input;
+    input.open("Input.txt");
+    char currentBit;
+    int *bitCnt = new int[12];
+    while(!input.eof()){
+        for(int i=12; 0<i; i--){
+            input >> currentBit;
+            if(currentBit=='1'){
+                bitCnt[i]++;
+            }else{
+                bitCnt[i]--;
+            }
+        }
+    }
+    int gamma = 0, epsilon = 0;
+    for(int i=12; 0<i; i--){
+        if(0 < bitCnt[i]){
+            gamma += pow(2, i-1);
+        }else{
+            epsilon += pow(2, i-1);
+        }
+    }
+    cout << gamma * epsilon << endl;
+    delete[] bitCnt;
+    bitCnt = nullptr;
+    input.close();
+}
